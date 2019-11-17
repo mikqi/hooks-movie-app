@@ -15,7 +15,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:ci": "yarn test --coverage --ci --colors --verbose",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
@@ -43,7 +42,6 @@
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.4",
     "codecov": "^3.6.1",
-    "coveralls": "^3.0.7",
     "gh-pages": "^2.1.1"
   }
 }
