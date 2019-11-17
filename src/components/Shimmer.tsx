@@ -20,7 +20,7 @@ const Shimmer = ({
         },
         { ...style }
       )}
-    ></div>
+    />
   )
 }
 

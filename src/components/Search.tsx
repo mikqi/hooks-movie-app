@@ -19,12 +19,13 @@ const Search = ({
     <div className="search">
       <form onSubmit={handleSubmit}>
         <input
+          data-testid="movie-search-input"
           type="text"
-          onInput={(e: any) => setQuery(e.target.value)}
+          onChange={(e: any) => setQuery(e.target.value)}
           value={query}
           placeholder={placeholder}
         />
-        <button>Search</button>
+        <button data-testid="movie-search-button">Search</button>
       </form>
     </div>
   )

@@ -9,11 +9,17 @@ const CardMovie = ({ movie }: { movie: Movie }) => {
   }
 
   return (
-    <div onClick={handleClick} className="movie-list__item" key={movie.imdbID}>
+    <div
+      data-testid="movie-list"
+      onClick={handleClick}
+      className="movie-list__item"
+      key={movie.imdbID}
+    >
       <img
         src={movie.Poster === 'N/A' ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster}
         alt={movie.Title}
       />
+
       <p className="movie-list__item-title">{movie.Title}</p>
       <p className="movie-list__item-year">{movie.Year}</p>
     </div>

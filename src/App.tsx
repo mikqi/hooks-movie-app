@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from 'react'
+import React, { useContext, useEffect } from 'react'
 import axios from 'axios'
 import { AppContext } from './store/AppContext'
 import { MovieResponse } from './store/reducer'
@@ -46,11 +46,13 @@ const App: React.FC = () => {
   }
 
   const LoadingComponent = () => (
-    <Fragment>
+    <>
       {Array(10)
         .fill('')
-        .map(() => (
+        .map((_, i) => (
           <div
+            data-testid="movie-loading"
+            key={i}
             style={{
               marginBottom: 18,
               flexDirection: 'column',
@@ -63,11 +65,12 @@ const App: React.FC = () => {
             <Shimmer width={70} height={10} />
           </div>
         ))}
-    </Fragment>
+    </>
   )
 
   const ErrorIllust = () => (
     <div
+      data-testid="movie-error"
       style={{
         marginTop: 28,
         display: 'flex',
@@ -82,13 +85,13 @@ const App: React.FC = () => {
   )
 
   return (
-    <Fragment>
+    <>
       <Header />
       <Search onSubmit={handleSubmit} placeholder="Search your movies..." />
       {error ? (
         <ErrorIllust />
       ) : (
-        <div className="movie-list__container">
+        <div data-testid="movie-container" className="movie-list__container">
           {loading ? (
             <LoadingComponent />
           ) : (
@@ -96,7 +99,7 @@ const App: React.FC = () => {
           )}
         </div>
       )}
-    </Fragment>
+    </>
   )
 }
 
