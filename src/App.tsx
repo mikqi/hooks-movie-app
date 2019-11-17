@@ -15,7 +15,6 @@ const GET_MOVIE_API_URL = (query: string = 'man') =>
 const App: React.FC = () => {
   const { dispatch, movies, loading, error } = useContext(AppContext)
 
-  console.log(loading)
   const fetchData = async (query?: string) => {
     dispatch({
       type: 'SEARCH_MOVIE'
