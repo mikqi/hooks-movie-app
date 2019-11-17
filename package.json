@@ -43,5 +43,15 @@
     "@types/react-dom": "16.9.4",
     "codecov": "^3.6.1",
     "gh-pages": "^2.1.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/serviceWorker.ts",
+      "!**/index.tsx",
+      "!**/__mocks__/**"
+    ]
   }
 }
