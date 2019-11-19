@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
-import { render, fireEvent, cleanup, act } from '@testing-library/react'
+import { render, fireEvent, cleanup, act, wait } from '@testing-library/react'
 import React from 'react'
 import axios from 'axios'
 import App from './App'
@@ -40,17 +40,16 @@ it('renders without crashing', async () => {
   const searchButton = getByTestId('movie-search-button')
 
   fireEvent.change(searchInput, { target: { value: 'mamam' } })
-  act(() => {
-    fireEvent.click(searchButton)
-  })
+  fireEvent.click(searchButton)
+  await wait()
 
   const movieError = await findByTestId('movie-error')
   expect(movieError).toBeInTheDocument()
   expect(getByTestId('movie-search-input').value).toEqual('')
 
-  act(() => {
-    fireEvent.click(searchButton)
-  })
+  fireEvent.click(searchButton)
+  await wait()
+
   expect(getByText(/Something went wrong/)).toBeInTheDocument()
 
   fireEvent.change(searchInput, { target: { value: 'spiderman' } })
