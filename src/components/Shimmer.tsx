@@ -1,14 +1,6 @@
 import React from 'react'
 
-const Shimmer = ({
-  width = 0,
-  height = 0,
-  style = {}
-}: {
-  width: number
-  height: number
-  style?: {}
-}) => {
+const Shimmer = ({ width, height, style = {} }: { width: number; height: number; style?: {} }) => {
   return (
     <div
       className="shimmer"
