@@ -16,8 +16,8 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - name: build project
       - uses: actions/checkout@v2
+      - name: build project
         run: |
           yarn build
       - name: deploy gh-pages
