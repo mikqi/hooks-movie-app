@@ -17,6 +17,7 @@ jobs:
 
     steps:
       - name: build project
+      - uses: actions/checkout@v2
         run: |
           yarn build
       - name: deploy gh-pages
