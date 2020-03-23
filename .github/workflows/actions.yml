@@ -40,7 +40,14 @@ jobs:
           yarn test:ci
         env:
           CI: true
-      - name: deploy gh-pages
+      - name: build project
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
-          yarn deploy
+          yarn build
+      - name: deploy gh-pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@3.4.2
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
