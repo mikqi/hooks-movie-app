@@ -5,6 +5,25 @@ on:
     types: [opened, reopened, edited, synchronize]
 
 jobs:
+  test:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: build project
+        run: |
+          yarn build
+      - name: deploy gh-pages
+        uses: JamesIves/github-pages-deploy-action@3.4.2
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+
   build:
     runs-on: ubuntu-latest
 
@@ -38,14 +57,3 @@ jobs:
           yarn test:ci
         env:
           CI: true
-      - name: build project
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          yarn build
-      - name: deploy gh-pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: JamesIves/github-pages-deploy-action@3.4.2
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
