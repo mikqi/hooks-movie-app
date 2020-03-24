@@ -4,11 +4,14 @@ on:
   pull_request:
     types: [opened, reopened, edited, synchronize]
   push:
-    branches: master
+    branches:
+      - master
+    paths:
+      - 'src/**'
 
 jobs:
-  test:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+  deploy-ghpages:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,6 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: build project
         run: |
+          yarn install
           yarn build
       - name: deploy gh-pages
         uses: JamesIves/github-pages-deploy-action@3.4.2

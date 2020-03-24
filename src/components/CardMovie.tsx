@@ -1,7 +1,8 @@
 import React from 'react'
 import { Movie } from '../store/reducer'
 
-const DEFAULT_PLACEHOLDER_IMAGE = 'http://www.movienewz.com/img/films/poster-holder.jpg'
+const DEFAULT_PLACEHOLDER_IMAGE =
+  'http://www.movienewz.com/img/films/poster-holder.jpg'
 
 const CardMovie = ({ movie }: { movie: Movie }) => {
   const handleClick = () => {
