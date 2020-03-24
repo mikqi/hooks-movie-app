@@ -7,7 +7,7 @@ on:
     branches:
       - master
     paths:
-      - 'src/components/**'
+      - 'src/**'
 
 jobs:
   test:
