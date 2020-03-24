@@ -3,6 +3,8 @@ name: Frontend
 on:
   pull_request:
     types: [opened, reopened, edited, synchronize]
+    paths:
+      - 'src/components/**/*.tsx'
   push:
     # branches: master
     paths:
