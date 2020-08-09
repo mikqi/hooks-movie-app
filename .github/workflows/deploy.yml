@@ -23,17 +23,15 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-            pwd
-            ls
-            docker build . -t index.docker.io/mikqi/hooks-movie-app:${{ github.sha }}
-            docker push index.docker.io/mikqi/hooks-movie-app:${{ github.sha }}
+            docker build . -t index.docker.io/mikqi/hooks-movie-app
+            docker push index.docker.io/mikqi/hooks-movie-app
 
         - name: Deploy to Azure Container Instances
           uses: azure/aci-deploy@v1
           with:
             resource-group: learning
             dns-name-label: hooks-movie-app
-            image: mikqi/hooks-movie-app:${{ github.sha }}
+            image: mikqi/hooks-movie-app
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
             name: hooks-movie-app
