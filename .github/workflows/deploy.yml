@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-            docker build -t mikqi/hooks-movie-app:${{ github.sha }}
+            docker build .t mikqi/hooks-movie-app:${{ github.sha }}
             docker push mikqi/hooks-movie-app:${{ github.sha }}
 
         - name: Deploy to Azure Container Instances
