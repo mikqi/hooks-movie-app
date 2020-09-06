@@ -17,6 +17,6 @@
 
 #### Using Gitpod
 - Click [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mikqi/hooks-movie-app)
-- You can experiment this PR on Gitpod
+- You can experiment this repository on your Gitpod
 
 ![gitpod](gitpod.png)
