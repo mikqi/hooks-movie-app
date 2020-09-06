@@ -6,9 +6,17 @@
 
 > This project using react hooks, react context, hook reducer and Typescript
 
-![screenshoot](screenshoot.png)
+![screenshot](screenshoot.png)
 
-### How to run locally
+### How to Run
 
+#### Local Machine
+- Make sure you already installed [NodeJS](https://nodejs.org/) and [Yarn](https://yarnpkg.com/)
 - `yarn` to install dependencies
 - `yarn dev` to run after all dependencies installed
+
+#### Using Gitpod
+- Click [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mikqi/hooks-movie-app)
+- You can experiment this PR on Gitpod
+
+![gitpod](gitpod.png)
