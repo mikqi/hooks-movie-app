@@ -1,0 +1,38 @@
+name: Deployment
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+
+jobs:
+  deploy-container:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout repo
+      - name: checkout github actions
+        uses: actions/checkout@master
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - uses: azure/docker-login@v1
+        with:
+          login-server: index.docker.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+            docker build . -t index.docker.io/mikqi/hooks-movie-app
+            docker push index.docker.io/mikqi/hooks-movie-app
+
+        - name: Deploy to Azure Container Instances
+          uses: azure/aci-deploy@v1
+          with:
+            resource-group: learning
+            dns-name-label: hooks-movie-app
+            image: mikqi/hooks-movie-app
+            registry-username: ${{ secrets.REGISTRY_USERNAME }}
+            registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+            name: hooks-movie-app
+            location: Southeast Asia
